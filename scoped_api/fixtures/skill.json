@@ -1,0 +1,37 @@
+[
+  {
+    "model": "scoped_api.skill",
+    "pk": 1,
+    "fields": {
+      "skill": "General Rigging"
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 2,
+    "fields": {
+      "skill": "Up-Rigger"
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 3,
+    "fields": {
+      "skill": "Rope Access"
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 4,
+    "fields": {
+      "skill": "Lead"
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 5,
+    "fields": {
+      "skill": "Ground Rigger"
+    }
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "model": "scoped_api.job",
+    "pk": 1,
+    "fields": {
+      "uid": 1,
+      "title": "Antenna Adjustment at Geodis",
+      "description": "We have been asked to adjust the 5G antenna that we installed last Year at Geodis Park.  This is a rope access call so make sure you check your gear before coming.  I will be dropping off the rig box in the morning with ropes, beam sliders, and some cold weather gear.  It is going to be cold so don't forget to dress accordingly with layers.  We will be Alejandro there from the install who will run you through the what he needs as well as bringing the antenna equipment.",
+      "datetime": "2023-02-23 08:30:00",
+      "location": "Geodis Park",
+      "address": "501 Benton Ave, Nashville, TN 37203",
+      "lat": 36.1300082,
+      "long": -86.7669713,
+      "category": 3
+    }
+  }
+]

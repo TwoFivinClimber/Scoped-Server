@@ -1,0 +1,42 @@
+[
+  {
+    "model": "scoped_api.jobgear",
+    "pk": 1,
+    "fields": {
+      "job": 1,
+      "gear": 1
+    }
+  },
+  {
+    "model": "scoped_api.jobgear",
+    "pk": 2,
+    "fields": {
+      "job": 1,
+      "gear": 2
+    }
+  },
+  {
+    "model": "scoped_api.jobgear",
+    "pk": 3,
+    "fields": {
+      "job": 1,
+      "gear": 3
+    }
+  },
+  {
+    "model": "scoped_api.jobgear",
+    "pk": 4,
+    "fields": {
+      "job": 1,
+      "gear": 4
+    }
+  },
+  {
+    "model": "scoped_api.jobgear",
+    "pk": 5,
+    "fields": {
+      "job": 1,
+      "gear": 5
+    }
+  }
+]

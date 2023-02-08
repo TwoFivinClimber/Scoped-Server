@@ -1,0 +1,42 @@
+[
+  {
+    "model": "scoped_api.user",
+    "pk": 1,
+    "fields": {
+      "firebase": "upHkmEp1vYPzf9vsC2hdN7HzSy12",
+      "name": "Brett Hughes",
+      "bio": "Rigger through and through. I have been working at heights for 6 years now and I don't plan on stopping",
+      "image": "https://res.cloudinary.com/twofiveclimb/image/upload/v1664024552/mad-app/cr69tv9cqzzppqasqkj5.jpg"
+    }
+  },
+  {
+    "model": "scoped_api.user",
+    "pk": 2,
+    "fields": {
+      "firebase": "testtest1234efgh",
+      "name": "Mitchel Mitcherson",
+      "bio": "Like the mail, I'm reliable if I have coffee",
+      "image": "https://lh3.googleusercontent.com/a/ALm5wu2cYOp6eZhtFOrG6haCRta_-K6x2w6CH7OJKUqTCw=s96-c"
+    }
+  },
+  {
+    "model": "scoped_api.user",
+    "pk": 3,
+    "fields": {
+      "firebase": "testtest1234hijk ",
+      "name": "Lesley KeysToTheFuture",
+      "bio": "Software engineer and project manager looking to take my skills to new heights",
+      "image": "https://lh3.googleusercontent.com/a/ALm5wu3-Eroy0TupmM4_XStUORM6BDF3Gt0NpJgu8gf4pA=s96-c"
+    }
+  },
+  {
+    "model": "scoped_api.user",
+    "pk": 4,
+    "fields": {
+      "firebase": "testtest1234lmno",
+      "name": "Darren Tate",
+      "bio": "Son of a tower climber and a tower climber myself. Rigging is my gig now",
+      "image": "https://lh3.googleusercontent.com/a/ALm5wu1DAJBdIYPm_4rdno2x5nhwO2jR5Fl5vb1TnLyKDQ=s96-c"
+    }
+  }
+]
