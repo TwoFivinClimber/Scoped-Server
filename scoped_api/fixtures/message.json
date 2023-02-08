@@ -1,0 +1,32 @@
+[
+  {
+  "model": "scoped_api.message",
+  "pk": 1,
+  "fields": {
+    "job": 1,
+    "content": "Does anyone have a rope I can borrow ?",
+    "uid": 1,
+    "datetime": "2023-02-07 18:10:30"
+  }
+  },
+  {
+    "model": "scoped_api.message",
+    "pk": 2,
+    "fields": {
+      "job": 1,
+      "content": "Where do we park ?",
+      "uid": 1,
+      "datetime": "2023-02-07 18:10:30"
+    }
+  },
+  {
+    "model": "scoped_api.message",
+    "pk": 3,
+    "fields": {
+      "job": 1,
+      "content": "Yeah man I got a rope for you ?",
+      "uid": 1,
+      "datetime": "2023-02-07 18:10:30"
+    }
+    }
+]

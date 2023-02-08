@@ -1,0 +1,32 @@
+[
+  {
+    "model": "scoped_api.crew",
+    "pk": 1,
+    "fields": {
+      "uid": 2,
+      "job": 1,
+      "skill": 3,
+      "accepted": true
+    }
+  },
+  {
+    "model": "scoped_api.crew",
+    "pk": 2,
+    "fields": {
+      "uid": 3,
+      "job": 1,
+      "skill": 3,
+      "accepted": true
+    }
+  },
+  {
+    "model": "scoped_api.crew",
+    "pk": 3,
+    "fields": {
+      "uid": 4,
+      "job": 1,
+      "skill": 5,
+      "accepted": null
+    }
+  }
+]
