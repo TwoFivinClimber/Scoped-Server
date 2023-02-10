@@ -17,11 +17,12 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from scoped_api.views import JobView, UserView
+from scoped_api.views import JobView, UserView, MessageView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'jobs', JobView, 'job')
 router.register(r'users', UserView, 'user')
+router.register(r'messages', MessageView, 'message')
 
 
 urlpatterns = [

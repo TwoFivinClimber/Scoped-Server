@@ -2,7 +2,8 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import Job, Skill, User, JobGear, Gear
+from scoped_api.models import Job, Skill, User, JobGear, Gear, Crew
+from .serializers import JobGearSerializer, JobCrewSerializer
 
 class JobView(ViewSet):
   
@@ -18,9 +19,13 @@ class JobView(ViewSet):
 
         job = Job.objects.get(pk=pk)
         
-        job_serialized = JobSerializer(job)
+        job_serialized = JobSerializer(job).data
+        job_gear = JobGear.objects.filter(job=job)
+        job_crew = Crew.objects.filter(job=job)
+        job_serialized['gear'] = JobGearSerializer(job_gear, many=True).data
+        job_serialized['crew'] = JobCrewSerializer(job_crew, many=True).data
         
-        return Response(job_serialized.data)
+        return Response(job_serialized)
     
     def create(self, request):
       
@@ -81,5 +86,6 @@ class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
         fields = ('id', 'title', 'description', 'datetime', 'location',
-                  'address', 'lat', 'long', 'category', 'uid')
+                  'address', 'lat', 'long', 'category', 'uid', 'crew', 'messages', 'gear')
         depth = 1
+        
