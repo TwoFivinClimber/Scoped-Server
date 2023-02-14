@@ -17,12 +17,15 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from scoped_api.views import JobView, UserView, MessageView
+from scoped_api.views import JobView, UserView, MessageView, CrewView, GearView, ImageView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'jobs', JobView, 'job')
 router.register(r'users', UserView, 'user')
 router.register(r'messages', MessageView, 'message')
+router.register(r'crews', CrewView, 'crew')
+router.register(r'gear', GearView, 'gear')
+router.register(r'images', ImageView, 'image')
 
 
 urlpatterns = [

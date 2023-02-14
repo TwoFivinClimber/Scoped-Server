@@ -82,7 +82,7 @@ class JobView(ViewSet):
         return Response(None, status.HTTP_204_NO_CONTENT)
       
 class JobSerializer(serializers.ModelSerializer):
-  
+
     class Meta:
         model = Job
         fields = ('id', 'title', 'description', 'datetime', 'location',
