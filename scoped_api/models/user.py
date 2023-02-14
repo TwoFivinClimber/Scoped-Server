@@ -8,3 +8,12 @@ class User(models.Model):
     image= models.CharField(max_length=100)
     
     
+    @property
+    def skills(self):
+        return self.__skills
+    
+    @skills.setter
+    def skills(self, value):
+        self.__skills = value
+   
+      
