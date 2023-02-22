@@ -11,6 +11,12 @@ class JobView(ViewSet):
       
         jobs = Job.objects.all()
         
+        uid = request.query_params.get('uid')
+        
+        if uid is not None:
+            user_jobs = Crew.objects.filter(uid=uid)
+            jobs =[job for job in jobs for user_job in user_jobs if user_job.job == job]
+        
         jobs_serialized = JobSerializer(jobs, many=True)
         
         return Response(jobs_serialized.data)

@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from scoped_api.models import Image, Job
-from django.forms.models import model_to_dict
+
 
 
 s3 = boto3.resource('s3')
@@ -42,9 +42,7 @@ class ImageView(ViewSet):
 
         image = Image.objects.get(pk=pk)
         
-        url = str(image.image)
-        
-        key = url.split('/')[3]
+        key = str(image.image).split('/')[3]
         
         s3.Object(bucket_name, key).delete()
         
