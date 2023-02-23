@@ -12,10 +12,16 @@ class CrewView(ViewSet):
         crew = Crew.objects.all()
         
         job = request.query_params.get('job')
+        uid = request.query_params.get('uid')
+        
         
         if job is not None:
 
             crew = crew.filter(job = job)
+        
+        if uid is not None:
+            
+            crew = crew.filter(uid = uid, accepted = None)
         
         crew_serialized = CrewSerializer(crew, many=True).data
         
@@ -80,5 +86,5 @@ class CrewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Crew
-        fields = ('id', 'accepted', 'skill', 'uid')
-        depth = 1        
+        fields = ('id', 'accepted', 'skill', 'uid', 'job')
+        depth = 2        

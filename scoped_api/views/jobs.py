@@ -16,6 +16,9 @@ class JobView(ViewSet):
         if uid is not None:
             user_jobs = Crew.objects.filter(uid=uid)
             jobs =[job for job in jobs for user_job in user_jobs if user_job.job == job]
+            
+            for job in jobs:
+                job.accepted = Crew.objects.get(job = job, uid = uid).accepted
         
         jobs_serialized = JobSerializer(jobs, many=True)
         
@@ -92,6 +95,6 @@ class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
         fields = ('id', 'title', 'description', 'datetime', 'location',
-                  'address', 'lat', 'long', 'category', 'uid', 'crew', 'messages', 'gear')
+                  'address', 'lat', 'long', 'category', 'uid', 'crew', 'messages', 'gear', 'accepted')
         depth = 1
         

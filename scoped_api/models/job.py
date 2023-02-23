@@ -34,3 +34,11 @@ class Job(models.Model):
     @crew.setter
     def crew(self, value):
         self.__crew = value
+        
+    @property
+    def accepted(self):
+        return self.__accepted
+    
+    @accepted.setter
+    def accepted(self, value):
+        self.__accepted = value
