@@ -14,7 +14,6 @@ class CrewView(ViewSet):
         job = request.query_params.get('job')
         uid = request.query_params.get('uid')
         
-        
         if job is not None:
 
             crew = crew.filter(job = job)

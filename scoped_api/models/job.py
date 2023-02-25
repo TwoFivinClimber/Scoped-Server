@@ -42,3 +42,11 @@ class Job(models.Model):
     @accepted.setter
     def accepted(self, value):
         self.__accepted = value
+        
+    @property
+    def images(self):
+        return self.__images
+        
+    @images.setter
+    def images(self, value):
+        self.__images = value
