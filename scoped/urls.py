@@ -17,7 +17,7 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from scoped_api.views import JobView, UserView, MessageView, CrewView, GearView, ImageView, SkillsView, check_user, register_user
+from scoped_api.views import JobView, UserView, MessageView, CrewView, GearView, ImageView, SkillsView, check_user, register_user, place
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'jobs', JobView, 'job')
@@ -33,5 +33,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('checkuser', check_user ),
     path('register', register_user),
+    path('place', place),
     path('', include(router.urls))
 ]
