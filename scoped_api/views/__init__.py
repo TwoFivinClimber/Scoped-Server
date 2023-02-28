@@ -6,4 +6,5 @@ from .crews import CrewView
 from .gear import GearView
 from .images import ImageView
 from .skills import SkillsView
-from .places import place
+from .user_skills import UserSkillView
+from .places import place, detail

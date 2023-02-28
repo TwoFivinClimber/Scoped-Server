@@ -7,11 +7,14 @@ from .serializers import UserSkillsSerializer
 class UserView(ViewSet):
 
     def list(self, request):
-
+        crew = request.query_params.get('crew')
         users = User.objects.all()
         
         users_serialized = UserSerializer(users, many = True).data
-        
+        if crew:
+            for user in users_serialized:
+                user['value'] = user.pop('id')
+                user['label'] = user.pop('name')
         return Response(users_serialized)
       
     def retrieve(self, request, pk):
