@@ -33,6 +33,9 @@ class JobView(ViewSet):
         job_crew = Crew.objects.filter(job=job)
         job_images = Image.objects.filter(job=job)
         job_serialized['gear'] = JobGearSerializer(job_gear, many=True).data
+        for obj in job_serialized['gear']:
+            obj['gear']['value'] = obj['gear'].pop('id')
+            obj['gear']['label'] = obj['gear'].pop('name')
         job_serialized['crew'] = JobCrewSerializer(job_crew, many=True).data
         job_serialized['images'] = JobImageSerializer(job_images, many=True).data
         
@@ -55,12 +58,14 @@ class JobView(ViewSet):
           uid = user
         )
         
-        job_gear = request.data['gear']
+        # job_gear = request.data['gear']
         
-        for item in job_gear:
-            JobGear.objects.create(gear = Gear.objects.get(pk=item), job = job)
+        # for item in job_gear:
+        #     JobGear.objects.create(gear = Gear.objects.get(pk=item), job = job)
+        
+        job_serialized = JobSerializer(job).data
 
-        return Response(None, status.HTTP_201_CREATED)
+        return Response(job_serialized, status.HTTP_201_CREATED)
     
     def update(self, request, pk):        
 

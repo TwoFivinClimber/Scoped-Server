@@ -14,12 +14,10 @@ class CrewView(ViewSet):
         job = request.query_params.get('job')
         uid = request.query_params.get('uid')
         
-        if job is not None:
-
-            crew = crew.filter(job = job)
         
+        if job is not None:
+            crew = crew.filter(job = job)
         if uid is not None:
-            
             crew = crew.filter(uid = uid, accepted = None)
         
         crew_serialized = CrewSerializer(crew, many=True).data

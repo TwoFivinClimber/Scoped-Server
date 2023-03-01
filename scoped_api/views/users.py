@@ -1,20 +1,22 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import User, Skill, UserSkill
+from scoped_api.models import User, Skill, UserSkill, Crew
 from .serializers import UserSkillsSerializer
 
 class UserView(ViewSet):
 
     def list(self, request):
-        crew = request.query_params.get('crew')
+        job = request.query_params.get('job')
         users = User.objects.all()
-        
+        if job is not None:
+            crews = Crew.objects.filter(job=job)
+            users = users.exclude(pk__in=crews.values_list('uid', flat=True))
+            
         users_serialized = UserSerializer(users, many = True).data
-        if crew:
-            for user in users_serialized:
-                user['value'] = user.pop('id')
-                user['label'] = user.pop('name')
+        for user in users_serialized:
+            user['value'] = user.pop('id')
+            user['label'] = user.pop('name')
         return Response(users_serialized)
       
     def retrieve(self, request, pk):
