@@ -1,8 +1,11 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
 import googlemaps
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
 
-gmaps = googlemaps.Client(key='AIzaSyCJ2NfeSz1_2urbi7pZUOEobxy7plkKNxA')
+gmaps = googlemaps.Client(key=os.environ.get('GOOGLE_API_KEY'))
 
 
 
