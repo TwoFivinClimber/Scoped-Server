@@ -26,6 +26,8 @@ class CrewView(ViewSet):
     
     def create(self, request):
         
+        
+        
         crew_member = Crew.objects.create(
            job = Job.objects.get(pk = request.data['job']),
            skill = Skill.objects.get(pk = request.data['skill']),
@@ -34,6 +36,15 @@ class CrewView(ViewSet):
         crew_member.save()
         
         return Response(None, status.HTTP_201_CREATED)
+    
+    def update(self, request, pk):
+        
+        crew_member = Crew.objects.get(pk=pk)
+        
+        crew_member.skill = request.data['skill']
+        crew_member.save()
+        
+        return Response(None, status.HTTP_204_NO_CONTENT)
       
     
     def destroy(self, request, pk):
