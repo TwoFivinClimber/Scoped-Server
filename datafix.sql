@@ -7,4 +7,4 @@ SET accepted = null
 WHERE id = 1
 
 DELETE FROM scoped_api_crew
-WHERE id = 12
+WHERE id = 13

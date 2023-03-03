@@ -39,6 +39,7 @@ class JobView(ViewSet):
         job_serialized['crew'] = JobCrewSerializer(job_crew, many=True).data
         job_serialized['images'] = JobImageSerializer(job_images, many=True).data
         
+        
         return Response(job_serialized)
     
     def create(self, request):

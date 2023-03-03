@@ -41,7 +41,7 @@ class CrewView(ViewSet):
         
         crew_member = Crew.objects.get(pk=pk)
         
-        crew_member.skill = request.data['skill']
+        crew_member.skill = Skill.objects.get(pk = request.data['skill'])
         crew_member.save()
         
         return Response(None, status.HTTP_204_NO_CONTENT)

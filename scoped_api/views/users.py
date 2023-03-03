@@ -17,6 +17,13 @@ class UserView(ViewSet):
         for user in users_serialized:
             user['value'] = user.pop('id')
             user['label'] = user.pop('name')
+        
+        for user in users_serialized:
+            for skill in user['skills']:
+                skill['skill']['value'] = skill['skill'].pop('id')
+                skill['skill']['label'] = skill['skill'].pop('skill')
+
+
         return Response(users_serialized)
       
     def retrieve(self, request, pk):
