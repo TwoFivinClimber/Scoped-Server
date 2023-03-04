@@ -50,7 +50,9 @@ class UserView(ViewSet):
         for skill in new_skills:
             UserSkill.objects.create(user=user, skill=Skill.objects.get(pk=skill))
         
-        return Response(None, status.HTTP_202_ACCEPTED)
+        user_serialized = UserSerializer(user).data
+        
+        return Response(user_serialized, status.HTTP_202_ACCEPTED)
     
     def destroy(self, request, pk):
 
