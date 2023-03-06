@@ -1,9 +1,13 @@
-# from django.http import HttpResponseServerError
+import boto3
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from scoped_api.models import Job, Skill, User, JobGear, Gear, Crew, Image
 from .serializers import JobGearSerializer, JobCrewSerializer, JobImageSerializer
+
+s3 = boto3.resource('s3')
+bucket = s3.Bucket('projectscoped')
+bucket_name = 'projectscoped'
 
 class JobView(ViewSet):
   
@@ -94,6 +98,12 @@ class JobView(ViewSet):
     def destroy(self, request, pk):
       
         job = Job.objects.get(pk=pk)
+        images = Image.objects.filter(job = job)
+        
+        for image in images:
+            key = str(image.image).split('/')[3]
+            s3.Object(bucket_name, key).delete()
+        
         job.delete()
         
         return Response(None, status.HTTP_204_NO_CONTENT)
