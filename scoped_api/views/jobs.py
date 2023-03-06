@@ -2,14 +2,23 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import Job, Skill, User, JobGear, Gear, Crew
-from .serializers import JobGearSerializer, JobCrewSerializer
+from scoped_api.models import Job, Skill, User, JobGear, Gear, Crew, Image
+from .serializers import JobGearSerializer, JobCrewSerializer, JobImageSerializer
 
 class JobView(ViewSet):
   
     def list(self, request):
       
         jobs = Job.objects.all()
+        
+        uid = request.query_params.get('uid')
+        
+        if uid is not None:
+            user_jobs = Crew.objects.filter(uid=uid)
+            jobs =[job for job in jobs for user_job in user_jobs if user_job.job == job]
+            
+            for job in jobs:
+                job.accepted = Crew.objects.get(job = job, uid = uid).accepted
         
         jobs_serialized = JobSerializer(jobs, many=True)
         
@@ -22,8 +31,14 @@ class JobView(ViewSet):
         job_serialized = JobSerializer(job).data
         job_gear = JobGear.objects.filter(job=job)
         job_crew = Crew.objects.filter(job=job)
+        job_images = Image.objects.filter(job=job)
         job_serialized['gear'] = JobGearSerializer(job_gear, many=True).data
+        for obj in job_serialized['gear']:
+            obj['gear']['value'] = obj['gear'].pop('id')
+            obj['gear']['label'] = obj['gear'].pop('name')
         job_serialized['crew'] = JobCrewSerializer(job_crew, many=True).data
+        job_serialized['images'] = JobImageSerializer(job_images, many=True).data
+        
         
         return Response(job_serialized)
     
@@ -44,12 +59,14 @@ class JobView(ViewSet):
           uid = user
         )
         
-        job_gear = request.data['gear']
+        # job_gear = request.data['gear']
         
-        for item in job_gear:
-            JobGear.objects.create(gear = Gear.objects.get(pk=item), job = job)
+        # for item in job_gear:
+        #     JobGear.objects.create(gear = Gear.objects.get(pk=item), job = job)
+        
+        job_serialized = JobSerializer(job).data
 
-        return Response(None, status.HTTP_201_CREATED)
+        return Response(job_serialized, status.HTTP_201_CREATED)
     
     def update(self, request, pk):        
 
@@ -86,6 +103,6 @@ class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
         fields = ('id', 'title', 'description', 'datetime', 'location',
-                  'address', 'lat', 'long', 'category', 'uid', 'crew', 'messages', 'gear')
+                  'address', 'lat', 'long', 'category', 'uid', 'crew', 'messages', 'gear', 'accepted', 'images')
         depth = 1
         

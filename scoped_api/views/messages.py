@@ -50,4 +50,5 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = ('id', 'content', 'datetime', 'job', 'uid')
+        depth= 1
         

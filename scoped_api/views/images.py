@@ -1,9 +1,11 @@
+import uuid
 import boto3
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from scoped_api.models import Image, Job
-from django.forms.models import model_to_dict
+
+
 
 
 s3 = boto3.resource('s3')
@@ -24,8 +26,9 @@ class ImageView(ViewSet):
     def create(self, request):
 
         image = request.FILES.get('image')
-      
-        response = bucket.put_object(Key='testingpostman', Body=image.read())
+        key = request.data['key']
+        
+        response = bucket.put_object(Key=key, Body=image.read())
           
         url = f"https://{response.bucket_name}.s3.us-east-2.amazonaws.com/{response.key}"
 
@@ -37,14 +40,21 @@ class ImageView(ViewSet):
         image.save()
         
         return Response(None, status.HTTP_201_CREATED)
+    
+    def update(self, request, pk):
+        
+        image = Image.objects.get(pk=pk)
+        
+        image.description = request.data['description']
+        image.save()
+        
+        return Response(None, status.HTTP_204_NO_CONTENT)
       
     def destroy(self, request, pk):
 
         image = Image.objects.get(pk=pk)
         
-        url = str(image.image)
-        
-        key = url.split('/')[3]
+        key = str(image.image).split('/')[3]
         
         s3.Object(bucket_name, key).delete()
         

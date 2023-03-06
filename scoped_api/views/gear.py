@@ -16,6 +16,8 @@ class GearView(ViewSet):
             
         return Response(gear_serialized)
 
+        
+
 class GearSerializer(serializers.ModelSerializer):
 
     class Meta:

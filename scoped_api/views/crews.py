@@ -12,16 +12,21 @@ class CrewView(ViewSet):
         crew = Crew.objects.all()
         
         job = request.query_params.get('job')
+        uid = request.query_params.get('uid')
+        
         
         if job is not None:
-
             crew = crew.filter(job = job)
+        if uid is not None:
+            crew = crew.filter(uid = uid, accepted = None)
         
         crew_serialized = CrewSerializer(crew, many=True).data
         
         return Response(crew_serialized)
     
     def create(self, request):
+        
+        
         
         crew_member = Crew.objects.create(
            job = Job.objects.get(pk = request.data['job']),
@@ -31,6 +36,15 @@ class CrewView(ViewSet):
         crew_member.save()
         
         return Response(None, status.HTTP_201_CREATED)
+    
+    def update(self, request, pk):
+        
+        crew_member = Crew.objects.get(pk=pk)
+        
+        crew_member.skill = Skill.objects.get(pk = request.data['skill'])
+        crew_member.save()
+        
+        return Response(None, status.HTTP_204_NO_CONTENT)
       
     
     def destroy(self, request, pk):
@@ -80,5 +94,5 @@ class CrewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Crew
-        fields = ('id', 'accepted', 'skill', 'uid')
-        depth = 1        
+        fields = ('id', 'accepted', 'skill', 'uid', 'job')
+        depth = 2        
