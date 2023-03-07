@@ -4,7 +4,7 @@ WHERE id = 2
 
 UPDATE scoped_api_crew
 SET accepted = null
-WHERE id = 1
+WHERE id = 51
 
 DELETE FROM scoped_api_crew
 WHERE id = 13

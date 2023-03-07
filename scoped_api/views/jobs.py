@@ -63,11 +63,6 @@ class JobView(ViewSet):
           uid = user
         )
         
-        # job_gear = request.data['gear']
-        
-        # for item in job_gear:
-        #     JobGear.objects.create(gear = Gear.objects.get(pk=item), job = job)
-        
         job_serialized = JobSerializer(job).data
 
         return Response(job_serialized, status.HTTP_201_CREATED)
