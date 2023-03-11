@@ -19,7 +19,7 @@ class JobView(ViewSet):
         
         if uid is not None:
             user_jobs = Crew.objects.filter(uid=uid)
-            jobs =[job for job in jobs for user_job in user_jobs if user_job.job == job]
+            jobs =[job for job in jobs for user_job in user_jobs if user_job.job == job and user_job.accepted is True]
             
             for job in jobs:
                 job.accepted = Crew.objects.get(job = job, uid = uid).accepted
@@ -62,6 +62,11 @@ class JobView(ViewSet):
           category = cat,
           uid = user
         )
+        
+        # job_gear = request.data['gear']
+        
+        # for item in job_gear:
+        #     JobGear.objects.create(gear = Gear.objects.get(pk=item), job = job)
         
         job_serialized = JobSerializer(job).data
 
