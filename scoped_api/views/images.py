@@ -1,12 +1,8 @@
-import uuid
 import boto3
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from scoped_api.models import Image, Job
-
-
-
 
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('projectscoped')

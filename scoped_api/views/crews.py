@@ -24,6 +24,7 @@ class CrewView(ViewSet):
         
         return Response(crew_serialized)
     
+    
     def create(self, request):
         
         
