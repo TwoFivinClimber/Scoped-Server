@@ -3,7 +3,7 @@
     "model": "scoped_api.crew",
     "pk": 1,
     "fields": {
-      "uid": 2,
+      "uid": 1,
       "job": 1,
       "skill": 3,
       "accepted": true
