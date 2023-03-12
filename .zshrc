@@ -9,3 +9,5 @@ alias reseed="
   python3 manage.py loaddata user_skill
   python3 manage.py loaddata image
   "
+
+alias runit="python manage.py runserver"
