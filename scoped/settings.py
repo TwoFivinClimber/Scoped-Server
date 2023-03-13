@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'scoped_api',
+    "phonenumber_field",
 ]
 
 CORS_ORIGIN_WHITELIST = [

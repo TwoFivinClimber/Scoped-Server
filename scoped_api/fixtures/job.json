@@ -4,6 +4,7 @@
     "pk": 1,
     "fields": {
       "uid": 1,
+      "company": 1,
       "title": "Antenna Adjustment at Geodis",
       "description": "We have been asked to adjust the 5G antenna that we installed last Year at Geodis Park.  This is a rope access call so make sure you check your gear before coming.  I will be dropping off the rig box in the morning with ropes, beam sliders, and some cold weather gear.  It is going to be cold so don't forget to dress accordingly with layers.  We will be Alejandro there from the install who will run you through the what he needs as well as bringing the antenna equipment.",
       "datetime": "2023-02-23 08:30:00",
@@ -12,6 +13,22 @@
       "lat": 36.1300082,
       "long": -86.7669713,
       "category": 3
+    }
+  },
+  {
+    "model": "scoped_api.job",
+    "pk": 2,
+    "fields": {
+      "uid": 5,
+      "company": 2,
+      "title": "Rasised Garden Beds",
+      "description": "For this job we will be building 2 rasied garden in the back yard of the client's house.  Dimensions of the beds are to be 4ft X 7ft and 2ft 6in tall from ground level.  The ground is slightly sloped running the across the 4ft side of the beds so make sure that the 2ft 6in height is measured from the high side of the beds.   We will be supplying the material that will be showing up with the supervisor the day of",
+      "datetime": "2023-04-01 07:00:00",
+      "location": "Client Address",
+      "address": "809 Chickasaw Ave, Nashville, TN 37207",
+      "lat": 36.200373,
+      "long": -86.754814,
+      "category": 11
     }
   }
 ]

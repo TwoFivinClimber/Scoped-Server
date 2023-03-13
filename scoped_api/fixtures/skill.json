@@ -3,35 +3,88 @@
     "model": "scoped_api.skill",
     "pk": 1,
     "fields": {
-      "skill": "General Rigging"
+      "skill": "General Rigging",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.skill",
     "pk": 2,
     "fields": {
-      "skill": "Up-Rigger"
+      "skill": "Up-Rigging",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.skill",
     "pk": 3,
     "fields": {
-      "skill": "Rope Access"
+      "skill": "Rope Access",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.skill",
     "pk": 4,
     "fields": {
-      "skill": "Lead"
+      "skill": "Lead",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.skill",
     "pk": 5,
     "fields": {
-      "skill": "Ground Rigger"
+      "skill": "Ground Rigging",
+      "company": 1
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 6,
+    "fields": {
+      "skill": "Supervisor",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 7,
+    "fields": {
+      "skill": "Landscaping",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 8,
+    "fields": {
+      "skill": "Plant Care",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 9,
+    "fields": {
+      "skill": "Tree Care",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 10,
+    "fields": {
+      "skill": "Stone Work",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.skill",
+    "pk": 11,
+    "fields": {
+      "skill": "Gardening",
+      "company": 2
     }
   }
 ]

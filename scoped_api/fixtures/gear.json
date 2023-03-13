@@ -3,35 +3,88 @@
     "model": "scoped_api.gear",
     "pk": 1,
     "fields": {
-      "name": "Rope"
+      "name": "Rope",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.gear",
     "pk": 2,
     "fields": {
-      "name": "Multi Tool"
+      "name": "Multi Tool",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.gear",
     "pk": 3,
     "fields": {
-      "name": "Harness"
+      "name": "Harness",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.gear",
     "pk": 4,
     "fields": {
-      "name": "Lanyards"
+      "name": "Lanyards",
+      "company": 1
     }
   },
   {
     "model": "scoped_api.gear",
     "pk": 5,
     "fields": {
-      "name": "Positioner"
+      "name": "Positioner",
+      "company": 1
+    }
+  },
+  {
+    "model": "scoped_api.gear",
+    "pk": 6,
+    "fields": {
+      "name": "Shovel",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.gear",
+    "pk": 7,
+    "fields": {
+      "name": "Gloves",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.gear",
+    "pk": 7,
+    "fields": {
+      "name": "Rake",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.gear",
+    "pk": 8,
+    "fields": {
+      "name": "Pruning Shears",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.gear",
+    "pk": 9,
+    "fields": {
+      "name": "Hose",
+      "company": 2
+    }
+  },
+  {
+    "model": "scoped_api.gear",
+    "pk": 10,
+    "fields": {
+      "name": "",
+      "company": 2
     }
   }
 ]
