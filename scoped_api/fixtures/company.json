@@ -19,7 +19,7 @@
   },
   {
     "model": "scoped_api.company",
-    "pk": 1,
+    "pk": 2,
     "fields": {
       "owner": 5,
       "name": "Eri's Plantitas",

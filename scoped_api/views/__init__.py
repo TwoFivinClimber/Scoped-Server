@@ -9,3 +9,4 @@ from .skills import SkillsView
 from .user_skills import UserSkillView
 from .places import place, detail
 from .job_gear import JobGearView
+from .company import CompanyView
