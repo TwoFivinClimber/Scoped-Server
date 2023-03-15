@@ -10,11 +10,11 @@ def check_user(request):
     '''checks if user has created profile'''
     uid = request.data['uid']
     try :
-      user = User.objects.get(firebase = uid)
-      
-      user_serialized = UserSerializer(user).data
-      
-      return Response(user_serialized, status.HTTP_200_OK)
+        user = User.objects.get(firebase = uid)
+        
+        user_serialized = UserSerializer(user).data
+        
+        return Response(user_serialized, status.HTTP_200_OK)
 
     except: 
         data = { 'valid': False }
