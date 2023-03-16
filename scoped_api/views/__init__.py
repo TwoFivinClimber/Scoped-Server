@@ -7,7 +7,7 @@ from .gear import GearView
 from .images import ImageView
 from .skills import SkillsView
 from .user_skills import UserSkillView
-from .places import place, detail
+from .places import place, detail, city
 from .job_gear import JobGearView
 from .company import CompanyView
 from .blog import BlogView
