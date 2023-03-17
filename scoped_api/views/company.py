@@ -2,7 +2,7 @@ from datetime import datetime
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import Company, User
+from scoped_api.models import Company, User, Employee
 from .serializers import CompanyEmployeeSerializer
 
 class CompanyView(ViewSet):
@@ -24,20 +24,28 @@ class CompanyView(ViewSet):
         return Response(company_serialized, status.HTTP_200_OK)
     
     def create(self, request):
-      
+        
         company = Company.objects.create(
           owner = User.objects.get(pk = request.data['uid']),
           name = request.data['name'],
-          image = request.data['image'],
           logo = request.data['logo'],
           type = request.data['type'],
+          email = request.data['email'],
+          phone = request.data['phone'],
           description = request.data['description'],
           location = request.data['location'],
           lat = request.data['lat'],
           long = request.data['long'],
-          creation = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+          creation = datetime.now().strftime("%Y-%m-%d")
         )
         company.save()
+        
+        Employee.objects.create(
+            company = company,
+            user = User.objects.get(pk=request.data['uid']),
+            admin = True,
+            creation = datetime.now().strftime("%Y-%m-%d")
+        )
         
         company_serialized = CompanySerializer(company).data
         
@@ -50,6 +58,8 @@ class CompanyView(ViewSet):
         company.image = request.data['image']
         company.logo = request.data['logo']
         company.type = request.data['type']
+        company.email = request.data['email'],
+        company.phone = request.data['phone'],
         company.description = request.data['description']
         company.location = request.data['location']
         company.lat = request.data['lat']
@@ -71,7 +81,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Company
-        fields = ('id', 'owner', 'name', 'image', 'logo', 'type', 'description', 'location', 'lat', 'long', 'creation', 'employees')
+        fields = ('id', 'owner', 'name', 'email', 'phone', 'image', 'logo', 'type', 'description', 'location', 'lat', 'long', 'creation', 'employees')
         depth = 1
         
         
