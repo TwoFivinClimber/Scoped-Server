@@ -10,12 +10,12 @@ class User(models.Model):
     image= models.CharField(max_length=100)
     
     
-    # @property
-    # def skills(self):
-    #     return self.__skills
+    @property
+    def compskills(self):
+        return self.__compskills
     
-    # @skills.setter
-    # def skills(self, value):
-    #     self.__skills = value
+    @compskills.setter
+    def compskills(self, value):
+        self.__compskills = value
    
       

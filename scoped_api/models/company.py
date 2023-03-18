@@ -13,9 +13,9 @@ class Company(models.Model):
     description = models.CharField(max_length=750)
     phone = PhoneNumberField(region='US', max_length=15)
     email = models.EmailField(max_length=100)
-    location = models.CharField(max_length=50)
-    lat = models.FloatField()
-    long = models.FloatField()
+    location = models.CharField(null=True, blank=True, max_length=50)
+    lat = models.FloatField(null=True, blank=True,)
+    long = models.FloatField(null=True, blank=True,)
     creation = models.DateField()
     
     
