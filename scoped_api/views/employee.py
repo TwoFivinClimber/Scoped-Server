@@ -2,7 +2,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from scoped_api.models import Employee, UserSkill
-from . user_skills import UserSkillSerializer
+from .user_skills import UserSkillSerializer
 
 class EmployeeView(ViewSet):
 
@@ -24,4 +24,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
     skills = UserSkillSerializer(many=True)
     class Meta:
         model = Employee
-        fields = ('id', 'admin', 'skills')
+        fields = ('id', 'admin', 'user', 'creation', 'skills')
+        depth = 1
+        
