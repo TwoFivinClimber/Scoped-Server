@@ -24,7 +24,7 @@ class SkillsView(ViewSet):
         
         skill = Skill.objects.create(
             skill = request.data['skill'],
-            company = Company.objects.get(pk = request.data('cid'))
+            company = Company.objects.get(pk = request.data['cid'])
         )
         
         skill_serialized = SkillsSerializer(skill).data

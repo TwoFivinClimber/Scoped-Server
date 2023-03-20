@@ -6,6 +6,8 @@ from rest_framework import serializers, status
 from rest_framework.decorators import action
 from scoped_api.models import Company, User, Employee
 from .serializers import CompanyEmployeeSerializer, CompanySkillsSerializer
+from .gear import GearSerializer
+from .invite import InviteSerializer
 
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('projectscoped')
@@ -94,11 +96,13 @@ class CompanyView(ViewSet):
             return Response({'message': 'Company Does not exist'}, status.HTTP_404_NOT_FOUND)
 class CompanySerializer(serializers.ModelSerializer):
     employees = CompanyEmployeeSerializer(many=True)
-    company_skills = CompanySkillsSerializer(many=True)
+    skills = CompanySkillsSerializer(many=True)
+    gear = GearSerializer(many=True)
+    invites = InviteSerializer(many=True)
 
     class Meta:
         model = Company
-        fields = ('id', 'owner', 'name', 'email', 'phone', 'image', 'logo', 'type', 'description', 'location', 'lat', 'long', 'creation', 'employees', 'company_skills')
+        fields = ('id', 'owner', 'name', 'email', 'phone', 'logo', 'type', 'description', 'location', 'lat', 'long', 'creation', 'employees', 'skills', 'gear', 'invites')
         depth = 1
         
         

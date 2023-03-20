@@ -22,12 +22,23 @@ class UserSkillView(ViewSet):
     
     def create(self, request):
         
-        user_skill = UserSkill.objects.create(
-            skill = Skill.objects.get(pk=request.data['skill']),
-            user = User.objects.get(pk=request.data['uid']),
-            company = Company.objects.get(pk=request.data['cid'])
-        )
-        user_skill.save()
+        user = User.objects.get(pk=request.data['uid'])
+        company = Company.objects.get(pk=request.data['cid'])
+        
+        existing_skills = UserSkill.objects.filter(user=user, company=company)
+        
+        for skill in existing_skills:
+            skill.delete()
+            
+        new_skills = request.data['skills']
+        
+        for skill in new_skills:
+            new_skill = UserSkill.objects.create(
+            skill = Skill.objects.get(pk=skill),
+            user = user,
+            company = company
+            )
+            new_skill.save()
         
         return Response(None, status.HTTP_201_CREATED)
     

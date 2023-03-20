@@ -7,10 +7,10 @@ alias reseed="
   python3 manage.py loaddata crew
   python3 manage.py loaddata job_gear
   python3 manage.py loaddata message
-  python3 manage.py loaddata user_skill
   python3 manage.py loaddata image
   python3 manage.py loaddata employee
   python3 manage.py loaddata blog
+  python3 manage.py loaddata invite
   "
 
 alias runit="python manage.py runserver"

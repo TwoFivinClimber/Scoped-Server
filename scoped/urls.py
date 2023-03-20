@@ -17,7 +17,7 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from scoped_api.views import JobView, UserView, MessageView, CrewView, GearView, ImageView, SkillsView, UserSkillView, JobGearView, check_user, register_user, place, detail, city, CompanyView, BlogView, EmployeeView
+from scoped_api.views import JobView, UserView, MessageView, CrewView, GearView, ImageView, SkillsView, UserSkillView, JobGearView, check_user, register_user, place, detail, city, CompanyView, BlogView, EmployeeView, InviteView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'jobs', JobView, 'job')
@@ -32,6 +32,7 @@ router.register(r'jobgears', JobGearView, 'jobgear')
 router.register(r'companies', CompanyView, 'company')
 router.register(r'blogs', BlogView, 'blog')
 router.register(r'employees', EmployeeView, 'employee')
+router.register(r'invites', InviteView, 'invite')
 
 
 

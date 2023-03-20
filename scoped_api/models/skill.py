@@ -3,6 +3,6 @@ from .company import Company
 
 class Skill(models.Model):
     skill= models.CharField(max_length=50)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='company_skills')
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='skills')
     
     

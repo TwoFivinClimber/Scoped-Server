@@ -22,7 +22,7 @@ class GearView(ViewSet):
         
         item = Gear.objects.create(
             name = request.data['name'],
-            company = Company.objects.get(pk=request.data('cid'))
+            company = Company.objects.get(pk=request.data['cid'])
         )
         
         gear_serialized = GearSerializer(item).data
@@ -42,4 +42,4 @@ class GearSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Gear
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'company')

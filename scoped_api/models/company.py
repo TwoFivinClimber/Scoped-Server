@@ -7,7 +7,6 @@ from .user import User
 class Company(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    image = models.CharField(null=True, blank=True,max_length=100)
     logo = models.CharField(null=True, blank=True, max_length=100)
     type = models.CharField(max_length=50)
     description = models.CharField(max_length=750)

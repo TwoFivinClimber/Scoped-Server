@@ -12,3 +12,4 @@ from .job_gear import JobGearView
 from .company import CompanyView
 from .blog import BlogView
 from .employee import EmployeeView
+from .invite import InviteView

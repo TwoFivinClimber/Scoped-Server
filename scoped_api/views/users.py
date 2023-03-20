@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import User, Skill, UserSkill, Crew, Employee
+from scoped_api.models import User, Skill, UserSkill, Crew, Employee, Invite
 from .serializers import UserSkillsSerializer, UserJobSerializer, UserCompanySerializer
 
 class UserView(ViewSet):
@@ -17,9 +17,11 @@ class UserView(ViewSet):
         
         if company is not None:
             employees = Employee.objects.filter(company = company)
+            invites = Invite.objects.filter(company = company)
             print(len(employees))
             
             users = users.exclude(pk__in=employees.values_list('user_id'))
+            users = users.exclude(pk__in=invites.values_list('uid_id'))
 
             
         users_serialized = UserSerializer(users, many = True).data

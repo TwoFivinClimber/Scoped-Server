@@ -9,5 +9,5 @@ from .image import Image
 from .crew import Crew
 from .company import Company
 from .employee import Employee
-from .invite import Invite
 from .blog import Blog
+from .invite import Invite
