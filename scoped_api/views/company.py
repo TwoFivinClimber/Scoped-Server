@@ -4,7 +4,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
-from scoped_api.models import Company, User, Employee
+from scoped_api.models import Company, User, Employee, Invite
 from .serializers import CompanyEmployeeSerializer, CompanySkillsSerializer
 from .gear import GearSerializer
 from .invite import InviteSerializer
@@ -25,6 +25,26 @@ class CompanyView(ViewSet):
     def retrieve(self, request, pk):
 
         company = Company.objects.get(pk=pk)
+        
+        uid = request.query_params.get('uid')
+        
+        if uid is not None:
+            try:
+                employee = Employee.objects.get(user = uid, company = company)
+                
+                company.isowner = company.owner == employee.user
+                
+                company.admin = employee.admin
+                
+            except Employee.DoesNotExist: 
+                company.isowner = False
+                company.admin = False
+                
+                invite = Invite.objects.get(uid = uid, company = company)
+                
+                if invite is not None:
+                    company.invited = True
+                
         
         company_serialized = CompanySerializer(company).data
         
@@ -102,7 +122,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Company
-        fields = ('id', 'owner', 'name', 'email', 'phone', 'logo', 'type', 'description', 'location', 'lat', 'long', 'creation', 'employees', 'skills', 'gear', 'invites')
+        fields = ('id', 'owner', 'name', 'email', 'phone', 'logo', 'type', 'description', 'location', 'lat', 'long', 'creation', 'employees', 'skills', 'gear', 'invites', 'admin', 'isowner', 'invited')
         depth = 1
         
         

@@ -46,14 +46,13 @@ class InviteView(ViewSet):
         try:
             invite = Invite.objects.get(pk=pk)
             employee = Employee.objects.create(
-                company = Company.objects.get(pk = invite.company),
-                user = User.objects.get(pk=invite.uid),
-                created = datetime.now().strftime("%Y-%m-%d")
+                company = Company.objects.get(pk = invite.company_id),
+                user = User.objects.get(pk=invite.uid_id),
+                creation = datetime.now().strftime("%Y-%m-%d")
             )
             employee.save()
-            employee_serialized = EmployeeSerializer(employee).data
             invite.delete()
-            return Response(employee_serialized, status.HTTP_201_CREATED)
+            return Response(None, status.HTTP_201_CREATED)
         except Invite.DoesNotExist as ex:
             return Response(ex, status.HTTP_404_NOT_FOUND)
         

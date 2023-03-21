@@ -1,4 +1,0 @@
-skill
-gear
-user
-job

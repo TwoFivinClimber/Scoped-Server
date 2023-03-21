@@ -14,11 +14,18 @@ class EmployeeView(ViewSet):
             employees = Employee.objects.filter(company = company)
             
             for emp in employees:
-                emp.skills = UserSkill.objects.filter(user=emp.pk, company = company)
+                emp.skills = UserSkill.objects.filter(user=emp.user, company = company)
         
         employees_serialized = EmployeeSerializer(employees, many=True).data
         
         return Response(employees_serialized, status.HTTP_200_OK)
+    
+    def destroy(self, request, pk):
+        
+        employee = Employee.objects.get(pk=pk)
+        employee.delete()
+        
+        return Response(None, status.HTTP_204_NO_CONTENT)
     
 class EmployeeSerializer(serializers.ModelSerializer):
     skills = UserSkillSerializer(many=True)

@@ -11,11 +11,17 @@ class UserView(ViewSet):
         company = request.query_params.get('cid')
         
         users = User.objects.all()
-        if job is not None:
+        if job is not None and company is not None:
+            employees = Employee.objects.filter(company = company)
+            crews = Crew.objects.filter(job=job)
+            users = users.filter(pk__in=employees.values_list('user', flat=True))
+            users = users.exclude(pk__in=crews.values_list('uid', flat=True))
+            
+        elif job is not None:
             crews = Crew.objects.filter(job=job)
             users = users.exclude(pk__in=crews.values_list('uid', flat=True))
         
-        if company is not None:
+        elif company is not None:
             employees = Employee.objects.filter(company = company)
             invites = Invite.objects.filter(company = company)
             print(len(employees))

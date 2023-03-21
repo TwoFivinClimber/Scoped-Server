@@ -40,6 +40,7 @@ class UserJobSerializer(serializers.ModelSerializer):
         model = Job
         fields = ('id', 'title', 'description', 'datetime', 'location',
                   'address', 'lat', 'long', 'category', 'uid',)
+        depth=1
 
 class UserCompanySerializer(serializers.ModelSerializer):
     class Meta:
@@ -50,7 +51,7 @@ class UserCompanySerializer(serializers.ModelSerializer):
 class CompanyEmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ('id', 'user')
+        fields = ('id', 'user', 'admin')
         depth = 1
 class CompanySkillsSerializer(serializers.ModelSerializer):
     class Meta:

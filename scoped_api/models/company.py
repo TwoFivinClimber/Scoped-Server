@@ -18,4 +18,26 @@ class Company(models.Model):
     creation = models.DateField()
     
     
+    @property
+    def admin(self):
+        return self.__admin
     
+    @admin.setter
+    def admin(self, value):
+        self.__admin = value
+        
+    @property
+    def isowner(self):
+        return self.__isowner
+    
+    @isowner.setter
+    def isowner(self, value):
+        self.__isowner = value
+        
+    @property
+    def invited(self):
+        return self.__invited
+    
+    @invited.setter
+    def invited(self, value):
+        self.__invited = value

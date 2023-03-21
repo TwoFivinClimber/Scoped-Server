@@ -32,10 +32,6 @@ def register_user(request):
       bio=request.data['bio'],
       image=request.data['image']
     )
-    
-    # new_skills = request.data['skills']
-    # for skill in new_skills:
-    #     UserSkill.objects.create(user=user, skill=Skill.objects.get(pk=skill))
         
     
     data = {
