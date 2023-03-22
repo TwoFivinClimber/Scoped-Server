@@ -138,6 +138,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST_FRAMEWORK = {
-#     'DATETIME_FORMAT': '%B %d, %Y' 
-# }
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%B, %d, %Y - %H:%M',
+    'DATE_FORMAT': '%m/%d/%Y'
+}
