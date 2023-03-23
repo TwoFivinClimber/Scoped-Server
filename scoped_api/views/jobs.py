@@ -88,13 +88,6 @@ class JobView(ViewSet):
         
         job.save()
         
-        existing_gear = JobGear.objects.filter(job = job)
-        for gear in existing_gear:
-            gear.delete()
-        new_gear = request.data['gear']
-        for gear in new_gear:
-            JobGear.objects.create(gear = Gear.objects.get(pk=gear), job = job)
-        
         return Response(None, status.HTTP_202_ACCEPTED)
         
     def destroy(self, request, pk):
