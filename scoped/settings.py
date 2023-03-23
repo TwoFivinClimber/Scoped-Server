@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'scoped_api',
+    "phonenumber_field",
 ]
 
 CORS_ORIGIN_WHITELIST = [
@@ -136,3 +137,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%B, %d, %Y-%H:%M',
+    'DATE_FORMAT': '%m/%d/%Y'
+}

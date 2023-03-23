@@ -1,28 +1,45 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import User, Skill, UserSkill, Crew
-from .serializers import UserSkillsSerializer
+from scoped_api.models import User, Skill, UserSkill, Crew, Employee, Invite
+from .serializers import UserSkillsSerializer, UserJobSerializer, UserCompanySerializer
 
 class UserView(ViewSet):
 
     def list(self, request):
         job = request.query_params.get('job')
+        company = request.query_params.get('cid')
+        
         users = User.objects.all()
-        if job is not None:
+        if job is not None and company is not None:
+            employees = Employee.objects.filter(company = company)
+            crews = Crew.objects.filter(job=job)
+            users = users.filter(pk__in=employees.values_list('user', flat=True))
+            users = users.exclude(pk__in=crews.values_list('uid', flat=True))
+            
+        elif job is not None:
             crews = Crew.objects.filter(job=job)
             users = users.exclude(pk__in=crews.values_list('uid', flat=True))
+        
+        elif company is not None:
+            employees = Employee.objects.filter(company = company)
+            invites = Invite.objects.filter(company = company)
+            print(len(employees))
+            
+            users = users.exclude(pk__in=employees.values_list('user_id'))
+            users = users.exclude(pk__in=invites.values_list('uid_id'))
+
             
         users_serialized = UserSerializer(users, many = True).data
         for user in users_serialized:
             user['value'] = user.pop('id')
             user['label'] = user.pop('name')
-        
+
+
         for user in users_serialized:
             for skill in user['skills']:
                 skill['skill']['value'] = skill['skill'].pop('id')
                 skill['skill']['label'] = skill['skill'].pop('skill')
-
 
         return Response(users_serialized)
       
@@ -39,6 +56,8 @@ class UserView(ViewSet):
 
         user = User.objects.get(pk=pk)
         user.name = request.data['name']
+        user.phone = request.data['phone']
+        user.email = request.data['email']
         user.bio = request.data['bio']
         user.save()
         
@@ -57,12 +76,16 @@ class UserView(ViewSet):
     def destroy(self, request, pk):
 
         user = User.objects.get(pk=pk)
+        print(user)
         user.delete()
 
         return Response(None, status.HTTP_204_NO_CONTENT)
+
 class UserSerializer(serializers.ModelSerializer):
     skills = UserSkillsSerializer(many=True)
+    jobs = UserJobSerializer(many=True)
+    companies = UserCompanySerializer(many=True)
     class Meta:
         model = User
-        fields = ('id', 'firebase', 'name', 'bio', 'image', 'skills')
+        fields = ('id', 'firebase', 'name', 'phone', "email", 'bio', 'image', 'skills', 'jobs', 'companies')
         depth = 2

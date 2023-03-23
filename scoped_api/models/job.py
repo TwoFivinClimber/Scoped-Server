@@ -1,9 +1,11 @@
 from django.db import models
 from .user import User
 from .skill import Skill
+from .company import Company
 
 class Job(models.Model):
-    uid= models.ForeignKey(User, on_delete=models.CASCADE)
+    uid= models.ForeignKey(User, on_delete=models.CASCADE, related_name='jobs')
+    company= models.ForeignKey(Company, on_delete=models.CASCADE)
     title= models.CharField(max_length=50)
     description= models.CharField(max_length=2000)
     datetime= models.DateTimeField()

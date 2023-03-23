@@ -2,7 +2,7 @@ import boto3
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import Job, Skill, User, JobGear, Gear, Crew, Image
+from scoped_api.models import Job, Skill, User, JobGear, Gear, Crew, Image, Company
 from .serializers import JobGearSerializer, JobCrewSerializer, JobImageSerializer
 
 s3 = boto3.resource('s3')
@@ -50,6 +50,7 @@ class JobView(ViewSet):
       
         cat = Skill.objects.get(pk=request.data['category'])
         user = User.objects.get(pk=request.data['uid'])
+        company = Company.objects.get(pk=request.data['cid'])
 
         job = Job.objects.create(
           title = request.data['title'],
@@ -60,6 +61,7 @@ class JobView(ViewSet):
           lat = request.data['lat'],
           long = request.data['long'],
           category = cat,
+          company = company,
           uid = user
         )
         
@@ -86,13 +88,6 @@ class JobView(ViewSet):
         
         job.save()
         
-        existing_gear = JobGear.objects.filter(job = job)
-        for gear in existing_gear:
-            gear.delete()
-        new_gear = request.data['gear']
-        for gear in new_gear:
-            JobGear.objects.create(gear = Gear.objects.get(pk=gear), job = job)
-        
         return Response(None, status.HTTP_202_ACCEPTED)
         
     def destroy(self, request, pk):
@@ -112,7 +107,6 @@ class JobSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Job
-        fields = ('id', 'title', 'description', 'datetime', 'location',
-                  'address', 'lat', 'long', 'category', 'uid', 'crew', 'messages', 'gear', 'accepted', 'images')
+        fields = ('id', 'company', 'title', 'description', 'datetime', 'location', 'address', 'lat', 'long', 'category', 'uid', 'crew', 'messages', 'gear', 'accepted', 'images')
         depth = 1
         

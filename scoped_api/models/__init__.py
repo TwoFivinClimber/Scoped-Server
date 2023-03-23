@@ -7,3 +7,7 @@ from .message import Message
 from .job import Job
 from .image import Image
 from .crew import Crew
+from .company import Company
+from .employee import Employee
+from .blog import Blog
+from .invite import Invite

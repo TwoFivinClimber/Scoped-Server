@@ -1,0 +1,36 @@
+[
+  {
+    "model": "scoped_api.company",
+    "pk": 1,
+    "fields": {
+      "owner": 1,
+      "name": "Chain Rainers",
+      "logo": "https://projectscoped.s3.us-east-2.amazonaws.com/crlogo.png",
+      "type": "Rigging",
+      "description": "Experienced rigging with a track record of quality, speed, and safety.  When chain needs to rain, call the chain rainers",
+      "phone": "707-621-1665",
+      "email": "brett.justplay@gmail.com",
+      "location": "Nashville, TN",
+      "lat": 36.1300082,
+      "long": -86.7669713,
+      "creation": "2023-03-12" 
+    }
+  },
+  {
+    "model": "scoped_api.company",
+    "pk": 2,
+    "fields": {
+      "owner": 5,
+      "name": "Eri's Plantitas",
+      "logo": "https://projectscoped.s3.us-east-2.amazonaws.com/Plantitas.png",
+      "type": "House Plants and Landscaping",
+      "description": "Big or small, I tackle projects to bring the natural fauna to your home",
+      "phone": "973-998-1616",
+      "email": "eriah85@gmail.com",
+      "location": "Nashville, TN",
+      "lat": 36.1300082,
+      "long": -86.7669713,
+      "creation": "2023-03-10" 
+    }
+  }
+]

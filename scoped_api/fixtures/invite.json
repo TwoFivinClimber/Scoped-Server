@@ -1,0 +1,10 @@
+[
+  {
+    "model": "scoped_api.invite",
+    "pk": 1,
+    "fields": {
+      "uid": 2,
+      "company": 1
+    }
+  }
+]

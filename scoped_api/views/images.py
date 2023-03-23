@@ -27,15 +27,19 @@ class ImageView(ViewSet):
         response = bucket.put_object(Key=key, Body=image.read())
           
         url = f"https://{response.bucket_name}.s3.us-east-2.amazonaws.com/{response.key}"
-
-        image = Image.objects.create(
-          image = url,
-          job = Job.objects.get(pk = request.data['job']),
-          description = request.data['description']
-        )
-        image.save()
         
-        return Response(None, status.HTTP_201_CREATED)
+        try:
+            image = Image.objects.create(
+            image = url,
+            job = Job.objects.get(pk = request.data['job']),
+            description = request.data['description']
+            )
+            image.save()
+            
+            return Response(None, status.HTTP_201_CREATED)
+        
+        except:
+            return Response(url, status.HTTP_201_CREATED)
     
     def update(self, request, pk):
         

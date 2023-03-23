@@ -5,6 +5,8 @@
     "fields": {
       "firebase": "upHkmEp1vYPzf9vsC2hdN7HzSy12",
       "name": "Brett Hughes",
+      "phone": "+1 707-621-1665",
+      "email": "brett.justplay@gmail.com",
       "bio": "Rigger through and through. I have been working at heights for 6 years now and I don't plan on stopping",
       "image": "https://res.cloudinary.com/twofiveclimb/image/upload/v1664024552/mad-app/cr69tv9cqzzppqasqkj5.jpg"
     }
@@ -15,6 +17,8 @@
     "fields": {
       "firebase": "testtest1234efgh",
       "name": "Mitchel Mitcherson",
+      "phone": "+1 251-751-0810",
+      "email": "email@email.com",
       "bio": "Like the mail, I'm reliable if I have coffee",
       "image": "https://lh3.googleusercontent.com/a/ALm5wu2cYOp6eZhtFOrG6haCRta_-K6x2w6CH7OJKUqTCw=s96-c"
     }
@@ -25,6 +29,8 @@
     "fields": {
       "firebase": "testtest1234hijk ",
       "name": "Lesley KeysToTheFuture",
+      "phone": "+1 555-1234",
+      "email": "lesley@lesley.com",
       "bio": "Software engineer and project manager looking to take my skills to new heights",
       "image": "https://lh3.googleusercontent.com/a/ALm5wu3-Eroy0TupmM4_XStUORM6BDF3Gt0NpJgu8gf4pA=s96-c"
     }
@@ -35,8 +41,22 @@
     "fields": {
       "firebase": "testtest1234lmno",
       "name": "Darren Tate",
+      "phone": "+1 615-962-9546",
+      "email": "jamesdarrentate@gmail.com",
       "bio": "Son of a tower climber and a tower climber myself. Rigging is my gig now",
       "image": "https://lh3.googleusercontent.com/a/ALm5wu1DAJBdIYPm_4rdno2x5nhwO2jR5Fl5vb1TnLyKDQ=s96-c"
+    }
+  },
+  {
+    "model": "scoped_api.user",
+    "pk": 5,
+    "fields": {
+      "firebase": "testbooboo",
+      "name": "Erika Aguilar",
+      "phone": "+1 973-998-1616",
+      "email": "eriah85@gmail.com",
+      "bio": "I just love plants, cats, and small tiny things",
+      "image": "https://projectscoped.s3.us-east-2.amazonaws.com/540A2355.JPG"
     }
   }
 ]

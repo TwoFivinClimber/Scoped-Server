@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from scoped_api.models import JobGear, Crew, UserSkill, Image, Job
+from scoped_api.models import JobGear, Crew, UserSkill, Image, Job, Employee, Skill
 
 
 class JobGearSerializer(serializers.ModelSerializer):
@@ -33,3 +33,28 @@ class EditJobSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'description', 'datetime', 'location',
                   'address', 'lat', 'long', 'category', 'uid',)
         depth = 1
+
+class UserJobSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Job
+        fields = ('id', 'title', 'description', 'datetime', 'location',
+                  'address', 'lat', 'long', 'category', 'uid',)
+        depth=1
+
+class UserCompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = ('id', 'company', 'admin')
+        depth = 1
+        
+class CompanyEmployeeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = ('id', 'user', 'admin')
+        depth = 1
+class CompanySkillsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = 'id', 'skill'
+        

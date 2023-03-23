@@ -1,0 +1,24 @@
+[
+  {
+    "model": "scoped_api.blog",
+    "pk": 1,
+    "fields": {
+      "uid": 1,
+      "company": 1,
+      "title": "Basic Rigging Gear",
+      "content": "Notice to all employees that your basic gear needed for ANY job includes the following: Knife, Multi-Tool, Gloves, ID Badge, and Proper Uniform explained in the on boarding material",
+      "datetime": "2023-03-13 10:30:00"
+    }
+  },
+  {
+    "model": "scoped_api.blog",
+    "pk": 2,
+    "fields": {
+      "uid": 5,
+      "company": 2,
+      "title": "Being Professional Always",
+      "content": "Hello everyone, this is a reminder that being kind and professional to our clients is of the highests importance.  This goes along with your own personal safety.  If you get into a situation with an agressive client, never perform a task that is un safe and naver get into an arguement with them.  If you need to say no to something, kindly say that you need to talk to your supervisor and then call your supervisor.",
+      "datetime": "2023-03-13 10:30:00"
+    }
+  }
+]
