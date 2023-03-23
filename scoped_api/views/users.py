@@ -76,9 +76,11 @@ class UserView(ViewSet):
     def destroy(self, request, pk):
 
         user = User.objects.get(pk=pk)
+        print(user)
         user.delete()
 
         return Response(None, status.HTTP_204_NO_CONTENT)
+
 class UserSerializer(serializers.ModelSerializer):
     skills = UserSkillsSerializer(many=True)
     jobs = UserJobSerializer(many=True)
