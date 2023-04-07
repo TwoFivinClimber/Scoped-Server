@@ -4,10 +4,11 @@ WHERE id = 2
 
 UPDATE scoped_api_user
 SET name = "Wayne Brettski"
-WHERE id = 9
-
-DELETE FROM scoped_api_crew
 WHERE id = 13
+
+UPDATE scoped_api_crew
+SET accepted = 1
+WHERE id = 21
 
 DELETE FROM scoped_api_employee
 WHERE id = 10
