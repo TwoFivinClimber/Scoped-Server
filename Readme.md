@@ -38,10 +38,9 @@ Scoped is a Scope of Work application that aims to provide transparency and clea
 
 ## Usage
 <h3>Runing the project locally</h3>
-
 - Clone this repository to you machine
 - Create a .env file in the root of the repository and copy the code below
-- <h4>Installations</h4>
+<h4>Installations</h4>
 - Run `pipenv install`
 - Run `pipenv shell`
 - Run `pip install django-phonenumber-field`
