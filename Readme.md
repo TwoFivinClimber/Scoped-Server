@@ -85,5 +85,20 @@ DEBUG = True
 - Run `aws configure set aws_access_key_id <YOUR_ACCESS_KEY>`from the saved CSV file
 - Run `aws configure set aws_secret_access_key <YOUR_SECRET_KEY>` from the saved CSV file
 
+<h3>Database Setup</h3>
+
+- Press `SHIFT+CMD+P` and select SQLite: Open Database
+- Select dbSQLite3
+- Run `python manage.py makemigrations scoped_api`
+- Run `python manage.py migrate`
+- Run the command alias `reseed`
+
+<h3>Run The Server</h3>
+- From the command line run the alias `runit` or `python manage.py runserver`
+
+
+** This server is dependent on the Front-End repository running as well.  Directions are listed in [Scoped-Client](https://github.com/TwoFivinClimber/Scoped_Client/blob/main/README.md)
+
+
 
 
