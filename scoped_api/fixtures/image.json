@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "job": 1,
-      "image": "../photos/soccer.png",
+      "image": "https://projectscoped.s3.us-east-2.amazonaws.com/19imagejpeg_3.JPG",
       "description": "Access point to under roof will be here"
     }
   },
@@ -13,7 +13,7 @@
     "pk": 2,
     "fields": {
       "job": 1,
-      "image": "../photos/tower.jpg",
+      "image": "https://projectscoped.s3.us-east-2.amazonaws.com/19imagejpeg_2(3).JPG",
       "description": "This photo has nothing to do witht the job.  It is here because I want to see how the job looks with two photos"
     }
   }
