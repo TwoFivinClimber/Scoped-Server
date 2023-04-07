@@ -41,9 +41,9 @@ Scoped is a Scope of Work application that aims to provide transparency and clea
 - Clone this repository to you machine
 
 <h4>Installations</h4>
-- Run ```pipenv install``` to install dependencies
-- Run ```pipenv shell``` to start a virtual environment
-- Run ```pip install django-phonenumber-field```
-- Run ```pip install django phonenumbers
-- Run ```pip install boto3```
-- Run ```pip install googlemaps```
+- Run `pipenv install` to install dependencies
+- Run `pipenv shell` to start a virtual environment
+- Run `pip install django-phonenumber-field`
+- Run `pip install django phonenumbers`
+- Run `pip install boto3`
+- Run `pip install googlemaps`
