@@ -34,7 +34,7 @@ Scoped is a Scope of Work application that aims to provide transparency and clea
 
 - **Comments on the jobs allow discussion to clear up questions**
 
-<img src="./styles/images/messaging.png" style="display: block">
+<img src="./images/messaging.png" style="display: block">
 
 ## Usage
 <h3>Runing the project locally</h3>
