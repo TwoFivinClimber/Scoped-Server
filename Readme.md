@@ -55,11 +55,13 @@ DEBUG = True
 
 <h3>Third Party Setup</h3>
 <h4>Google Maps API</h4>
-- Set up a Google Maps Platform Project to obtain an API KEY [HERE](https://mapsplatform.google.com/?utm_source=search&utm_medium=googleads&utm_campaign=brand_core_exa_desk_mobile_us&gclid=Cj0KCQjw_r6hBhDdARIsAMIDhV8lHRlLjK7DaVksC2RGodc-NVyN-Z3s8nDHdgkufo31s1qccZzRStsaAuBYEALw_wcB&gclsrc=aw.ds). Places API must be enabled.
+
+- Set up a Google Maps Platform Project to obtain an API KEY [here.](https://mapsplatform.google.com/?utm_source=search&utm_medium=googleads&utm_campaign=brand_core_exa_desk_mobile_us&gclid=Cj0KCQjw_r6hBhDdARIsAMIDhV8lHRlLjK7DaVksC2RGodc-NVyN-Z3s8nDHdgkufo31s1qccZzRStsaAuBYEALw_wcB&gclsrc=aw.ds) Places API must be enabled.
 - Under 'Credentials' locate your API KEY and copy it into the .env file
 
 <h4>AWS S3 Bucket</h4>
-- Create a AWS account (if needed) and set up a AWS S3 bucket [HERE](https://aws.amazon.com/s3/)
+
+- Create a AWS account (if needed) and set up a AWS S3 bucket [here](https://aws.amazon.com/s3/)
 - Download and save the CSV file containing your API KEY and API SECRET
 - Disable "Block all public access"
 - Create a bucket policy to match the following with your new bucket
