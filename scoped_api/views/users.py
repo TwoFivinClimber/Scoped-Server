@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from scoped_api.models import User, Skill, UserSkill, Crew, Employee, Invite
+from scoped_api.models import User, Skill, UserSkill, Crew, Employee, Invite, Job
 from .serializers import UserSkillsSerializer, UserJobSerializer, UserCompanySerializer
 
 class UserView(ViewSet):
@@ -83,9 +83,15 @@ class UserView(ViewSet):
 
 class UserSerializer(serializers.ModelSerializer):
     skills = UserSkillsSerializer(many=True)
-    jobs = UserJobSerializer(many=True)
     companies = UserCompanySerializer(many=True)
+    jobs = serializers.SerializerMethodField()
+    # jobs = UserJobSerializer(many=True)
     class Meta:
         model = User
         fields = ('id', 'firebase', 'name', 'phone', "email", 'bio', 'image', 'skills', 'jobs', 'companies')
         depth = 2
+    def get_jobs(self, instance):
+        jobs = instance.jobs.all().order_by('datetime')
+        return UserJobSerializer(jobs, many=True).data
+    
+    
